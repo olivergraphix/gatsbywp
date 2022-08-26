@@ -12,7 +12,8 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "http://10.0.0.111:8888/graphql",
+        // url: "http://10.0.0.111:8888/graphql",
+        url: "https://proudbusiness.com/gatsby/graphql",
       },
     },
     "gatsby-plugin-postcss",
