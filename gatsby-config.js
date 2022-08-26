@@ -7,11 +7,12 @@ module.exports = {
     logo: `/logo.png`,
     twitter: `@mor10`,
   },
+  // assetPrefix: 'http://10.0.0.112:8888/gatsby-wp/gwp/public/',
   plugins: [
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "http://mywpsite.local/graphql",
+        url: "http://10.0.0.111:8888/graphql",
       },
     },
     "gatsby-plugin-postcss",

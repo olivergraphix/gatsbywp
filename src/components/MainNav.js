@@ -1,13 +1,12 @@
 /**
- * Creates hierarchical menu based on WordPress menu.
- * @link https://www.wpgraphql.com/docs/menus/#hierarchical-data
+ * Creates flat menu based on WordPress data
  */
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import UniversalLink from "../utils/UniversalLink"
 import { FlatListToHierarchical } from "../utils/FlatListToHierarchical"
 
-import * as styles from "./mainNav.module.css"
+import * as styles from "./MainNav.module.css"
 
 const MenuLoop = ({ menuItems }) => {
   return (
@@ -42,7 +41,7 @@ const MainNav = () => {
         }
       ) {
         nodes {
-          id
+         id
           title: label
           path
           parentId
@@ -50,18 +49,20 @@ const MainNav = () => {
       }
     }
   `)
-  console.log("Raw data:", wpMenu.allWpMenuItem.nodes)
+
+  // console.log("Raw data: ", wpMenu.allWpMenuItem.nodes)
+
 
   const headerMenu = FlatListToHierarchical(wpMenu.allWpMenuItem.nodes, {
     idKey: "id",
     childrenKey: "children",
     parentKey: "parentId",
   })
-  console.log("headerMenu: ", headerMenu)
+  // console.log("headerMenu: ", headerMenu)
 
   return (
     <nav className={styles.mainnav}>
-      {headerMenu.length > 0 && <MenuLoop menuItems={headerMenu}></MenuLoop>}
+      {headerMenu.length > 0 && <MenuLoop menuItems={headerMenu} ></MenuLoop> }
     </nav>
   )
 }

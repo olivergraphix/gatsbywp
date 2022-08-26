@@ -1,0 +1,16 @@
+.footerNav {
+    max-width: 1360px;
+}
+.footerNav ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.footerNav ul li a {
+    color: deeppink;
+    margin: 0 20px;
+}
+.footerNav ul li.has-submenu a {
+    color: yellow;
+}

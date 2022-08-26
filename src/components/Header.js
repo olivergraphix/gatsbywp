@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-
 import MainNav from "./MainNav"
 
 const Header = ({ siteTitle }) => (

@@ -1,11 +1,9 @@
-/**
- * Creates hierarchical menu based on WordPress menu.
- * @link https://www.wpgraphql.com/docs/menus/#hierarchical-data
- */
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import UniversalLink from "../utils/UniversalLink"
 import { FlatListToHierarchical } from "../utils/FlatListToHierarchical"
+
+import * as styles from "./FooterSocialNav.module.css"
 
 const MenuLoop = ({ menuItems }) => {
   return (
@@ -29,15 +27,18 @@ const MenuLoop = ({ menuItems }) => {
   )
 }
 
-const FooterNav = () => {
+
+const FooterSocialNav = () => {
   const wpMenu = useStaticQuery(graphql`
     {
       allWpMenuItem(
         sort: { fields: order, order: ASC }
-        filter: { menu: { node: { slug: { eq: "all-pages" } } } }
+        filter: {
+          menu: { node: { slug: { eq: "social-menu" } } }
+        }
       ) {
         nodes {
-          id
+         id
           title: label
           path
           parentId
@@ -45,7 +46,9 @@ const FooterNav = () => {
       }
     }
   `)
-  console.log("Raw data:", wpMenu.allWpMenuItem.nodes)
+
+  console.log("Raw data: ", wpMenu.allWpMenuItem.nodes)
+
 
   const headerMenu = FlatListToHierarchical(wpMenu.allWpMenuItem.nodes, {
     idKey: "id",
@@ -55,10 +58,10 @@ const FooterNav = () => {
   console.log("headerMenu: ", headerMenu)
 
   return (
-    <nav style={{ textAlign: "left" }}>
-      {headerMenu.length > 0 && <MenuLoop menuItems={headerMenu}></MenuLoop>}
+    <nav className={styles.footerNav}>
+      {headerMenu.length > 0 && <MenuLoop menuItems={headerMenu} ></MenuLoop> }
     </nav>
   )
 }
 
-export default FooterNav
+export default FooterSocialNav
