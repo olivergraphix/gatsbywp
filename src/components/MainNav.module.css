@@ -31,6 +31,6 @@
   border-color: hsla(0, 0%, 100%, 1);
 }
 
-.mainnav li.has-submenu {
+.mainnav li.has-submenu a {
  background: green;
 }
